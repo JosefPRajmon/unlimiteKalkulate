@@ -6,10 +6,10 @@
 
 <?php
  if (isset($_POST["submit"])){
-     $a = $_POST["firstNumber"];
-     $b = $_POST["secontNumber"];
+     $firstNumber = $_POST["firstNumber"];
+     $secondNumber = $_POST["secontNumber"];
 
-     echo bcadd($a, $b);
+     echo bcadd($firstNumber, $secondNumber);
  }
 
 
