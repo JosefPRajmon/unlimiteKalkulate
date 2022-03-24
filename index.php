@@ -1,6 +1,12 @@
 <form method="post">
-    <input type="number" name="firstNumber" placeholder="první číslo"><br>
-    <input type="number" name="secontNumber" placeholder="druhé cislo"><br>
+    <label>
+        <input type="number" name="firstNumber" placeholder="první číslo">
+    </label>
+    <br>
+    <label>
+        <input type="number" name="secontNumber" placeholder="druhé cislo">
+    </label>
+    <br>
     <input type="submit" name="submit">
 </form>
 
