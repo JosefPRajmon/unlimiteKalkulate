@@ -9,11 +9,11 @@ if (isset($_POST["submit"])){
 
 <form method="post">
     <label>
-        <input type="number" name="firstNumber" placeholder="první číslo" value=<?php echo $firstNumber ?> >
+        <input type="number" name="firstNumber" placeholder="první číslo" value=<?php if (isset($_POST["submit"])){echo $firstNumber;} ?> >
     </label>
     <br>
     <label>
-        <input type="number" name="secontNumber" placeholder="druhé cislo" value=<?php echo $secondNumber ?> >
+        <input type="number" name="secontNumber" placeholder="druhé cislo" value=<?php if (isset($_POST["submit"])){ echo $secondNumber;} ?> >
     </label>
     <br>
     <input type="submit" name="submit">
