@@ -19,49 +19,41 @@ if (isset($_POST["submit"])){
 
 <?php
 if (isset($_POST["submit"])){
-    $arrayFirsNumber =str_split(strrev($firstNumber));
+    $arrayFirsNumber = str_split(strrev($firstNumber));
     $arraySecondNumber = str_split(strrev($secondNumber));
     $numerickRest = 0;
     $number = 0;
-    if (count($arrayFirsNumber) > count($arraySecondNumber)){
-        $number = count($arrayFirsNumber);
-    }
-    else{
-        $number = count($arraySecondNumber);
-    }
+    $number = max(count($arrayFirsNumber), count($arraySecondNumber));
 
-    $arraySumary=[];
-    for ($i = 0; $i < $number ; $i++){
+    $arraySumary = [];
+    for ($i = 0; $i <= $number; $i++){
         $val1 = (int)($arrayFirsNumber[$i] ?? 0);
         $val2 = (int)($arraySecondNumber[$i] ?? 0);
-        $sumary = $val1 + $val2 + $numerickRest;
+         $sumary = $val1 + $val2 + $numerickRest;
 
+         $arrayNumber = (string) $sumary ;
+        //if (count($arraySumary) > 1){
+            $x = count($arraySumary);
+            $arrayNumber = strrev($arrayNumber);
+                $arraySumary[] =  $arrayNumber[0];
+                if (isset($arrayNumber[1]))
+                    $numerickRest = (int) $arrayNumber[1];
+                else
+                    $numerickRest = 0;
 
-        if($sumary >= 20){
-            $sumary = $sumary -20;
-            $numerickRest = 2;
-            $arraySumary[$i]= $sumary;
-
-        }
-        elseif ($sumary >= 10){
-
-            $sumary = $sumary -10;
-            $numerickRest = 1;
-            $arraySumary[$i]= $sumary;
-
-        }
-        else{
-            $numerickRest = 0;
-            $arraySumary[$i]= $sumary;
-        }
     }
-
     $finalNumber ="";
-    for ($y = 0; $y<$number;$y++){
-        $finalNumber = $finalNumber . $arraySumary[$y];
+    for ($y = 0; $y <= $number; $y++){
+        if ($y == $number & $arraySumary[$y] == 0){
+                $arraySumary[$y] = "";
+         }
+         $finalNumber = $finalNumber . $arraySumary[$y];
+
     }
     $finalNumber = strrev($finalNumber);
-    echo $finalNumber;
+    $finalNumberRepiar = [];
+
+    echo "<br> výsledek je: $finalNumber";
 
 
 }
