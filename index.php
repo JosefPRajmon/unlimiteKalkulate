@@ -1,7 +1,9 @@
 <?php
+include "function.php";
 if (isset($_POST["submit"])){
-    $firstNumber = (string) $_POST["firstNumber"];
-    $secondNumber = (string) $_POST["secontNumber"];
+    $dataArray = getPost();
+    $firstNumber = $dataArray[0];
+    $secondNumber = $dataArray[1];
 }
 
 
@@ -21,33 +23,28 @@ if (isset($_POST["submit"])){
 if (isset($_POST["submit"])){
     $arrayFirsNumber = str_split(strrev($firstNumber));
     $arraySecondNumber = str_split(strrev($secondNumber));
-    $numerickRest = 0;
+    $numericRest = 0;
     $number = 0;
     $number = max(count($arrayFirsNumber), count($arraySecondNumber));
 
-    $arraySumary = [];
+    $arraySummary = [];
     for ($i = 0; $i <= $number; $i++){
         $val1 = (int)($arrayFirsNumber[$i] ?? 0);
         $val2 = (int)($arraySecondNumber[$i] ?? 0);
-         $sumary = $val1 + $val2 + $numerickRest;
+        $summary = $val1 + $val2 + $numericRest;
 
-         $arrayNumber = (string) $sumary ;
-        //if (count($arraySumary) > 1){
-            $x = count($arraySumary);
-            $arrayNumber = strrev($arrayNumber);
-                $arraySumary[] =  $arrayNumber[0];
-                if (isset($arrayNumber[1]))
-                    $numerickRest = (int) $arrayNumber[1];
-                else
-                    $numerickRest = 0;
+        $arrayNumber = (string) $summary;
+        $arrayNumber = strrev($arrayNumber);
+        $arraySummary[] = $summary % 10 ;
+        $numericRest = floor($summary / 10);
 
     }
     $finalNumber ="";
     for ($y = 0; $y <= $number; $y++){
-        if ($y == $number & $arraySumary[$y] == 0){
-                $arraySumary[$y] = "";
+        if ($y == $number & $arraySummary[$y] == 0){
+                $arraySummary[$y] = "";
          }
-         $finalNumber = $finalNumber . $arraySumary[$y];
+         $finalNumber = $finalNumber . $arraySummary[$y];
 
     }
     $finalNumber = strrev($finalNumber);
